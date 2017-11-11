@@ -1,0 +1,68 @@
+x=0;
+3s:
+rx,2,3,4;
+c500,500,100*sin(x);
+
+{
+    "variables": {
+        "x": {
+            "returns": "integer",
+            "integer": 0
+        }
+    },
+    "loop": 3000,
+    "statements": [
+        {
+            "instruction": "rectangle",
+            "x": {
+                "returns": "variable",
+                "variable": "x"
+            },
+            "y": {
+                "returns": "integer",
+                "integer": 2
+            },
+            "w": {
+                "returns": "integer",
+                "integer": 3
+            },
+            "h": {
+                "returns": "integer",
+                "integer": 4
+            }
+        },
+        {
+            "instruction": "circle",
+            "x": {
+                "returns": "integer",
+                "integer": 500
+            },
+            "y": {
+                "returns": "integer",
+                "integer": 500
+            },
+            "r": {
+                "returns": "binop",
+                "binop": {
+                    "l": {
+                        "returns": "integer",
+                        "integer": 100
+                    },
+                    "r": {
+                        "returns": "funccall",
+                        "funccall": {
+                            "function": "sin",
+                            "arguments": [
+                                {
+                                    "returns": "variable",
+                                    "variable": "x"
+                                }
+                            ]
+                        }
+                    },
+                    "op": "*"
+                }
+            }
+        }
+    ]
+}
