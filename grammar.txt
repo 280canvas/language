@@ -1,0 +1,38 @@
+x=0;
+50ms:
+clr;
+c500,500+sin x,200*sin x;
+x++;
+
+program         : variableDec* loop (statement ';')*
+variableDec     : ID '=' value ';'
+loop            : INT ('ms'|'s') ':'
+statement       : clear
+                | shape
+                | increment
+                | decrement
+                | variableAssign
+                | 
+
+shape           : ('rect' | 'r') value ',' value ',' value ',' value
+                | ('circle' | 'c') value ',' value ',' value
+                | ('line' | 'l') value ',' value ',' value ',' value
+                | ('arc' | 'a') value ',' value ',' value ',' value ',' value ',' value
+                
+increment       : ID '++'
+decrement       : ID '--'
+
+variableAssign  : ID '=' value
+
+value           : value '/' value
+                | value '//' value  # Floor division
+                | value '*' value  
+                | value '+' value
+                | value '-' value
+                | value '%' value   # Modulo division
+                | '%'               # 1000
+                | ID                # Variable
+                | INT               # Integer
+
+ID              : [a-z]
+INT             : [0-9]*
